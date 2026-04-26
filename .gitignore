@@ -1,0 +1,6 @@
+/target
+/release
+*.exe
+*.pdb
+.env
+*.log
