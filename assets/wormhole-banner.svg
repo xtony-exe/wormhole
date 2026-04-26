@@ -1,0 +1,105 @@
+<svg width="1280" height="400" viewBox="0 0 1280 400" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Background -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05070d"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Wormhole gradient -->
+    <radialGradient id="wormhole" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="40%" stop-color="#6366f1"/>
+      <stop offset="75%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+    <!-- Glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Moving dash pattern -->
+    <style>
+      .flow {
+        stroke-dasharray: 6 6;
+        animation: flowAnim 4s linear infinite;
+      }
+
+      @keyframes flowAnim {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -60; }
+      }
+
+      .pulse {
+        animation: pulseAnim 3s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      @keyframes pulseAnim {
+        0%   { transform: scale(0.9); opacity: 0.7; }
+        50%  { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(0.9); opacity: 0.7; }
+      }
+
+      .fadeText {
+        animation: fadeTextAnim 6s ease-in-out infinite;
+      }
+
+      @keyframes fadeTextAnim {
+        0%,100% { opacity: 0.6; }
+        50%     { opacity: 1; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="400" fill="url(#bg)" />
+
+  <!-- Data flow lines -->
+  <g stroke="#6366f1" stroke-width="1.2" opacity="0.35">
+    <line class="flow" x1="0" y1="90" x2="1280" y2="90"/>
+    <line class="flow" x1="0" y1="310" x2="1280" y2="310"/>
+    <line class="flow" x1="180" y1="0" x2="180" y2="400"/>
+    <line class="flow" x1="1100" y1="0" x2="1100" y2="400"/>
+  </g>
+
+  <!-- Wormhole pulse layers -->
+  <circle class="pulse" cx="640" cy="200" r="90" fill="url(#wormhole)" opacity="0.9"/>
+  <circle class="pulse" cx="640" cy="200" r="130" fill="url(#wormhole)" opacity="0.4"/>
+  <circle class="pulse" cx="640" cy="200" r="170" fill="url(#wormhole)" opacity="0.2"/>
+
+  <!-- Core -->
+  <circle cx="640" cy="200" r="45" fill="#000" filter="url(#glow)" />
+
+  <!-- Title -->
+  <text x="50%" y="155" text-anchor="middle"
+        font-family="monospace"
+        font-size="44"
+        fill="#e5e7eb"
+        font-weight="bold">
+    WORMHOLE
+  </text>
+
+  <!-- Subtitle -->
+  <text class="fadeText" x="50%" y="200" text-anchor="middle"
+        font-family="monospace"
+        font-size="18"
+        fill="#a5b4fc">
+    Secure • Fast • Cross-Chain Transfer
+  </text>
+
+  <!-- Branding -->
+  <text x="50%" y="250" text-anchor="middle"
+        font-family="monospace"
+        font-size="14"
+        fill="#6b7280">
+    by xtony.exe
+  </text>
+
+</svg>
