@@ -23,7 +23,7 @@
 
 ### Option 1: Download the .exe (Recommended for Windows)
 
-1. Go to the [Releases](https://github.com/XTONY77/wormhole/releases) page
+1. Go to the [Releases](https://github.com/xtony-exe/wormhole/releases) page
 2. Download `wormhole.exe`
 3. Place it in any folder (e.g. `C:\Tools\`)
 4. Open **PowerShell** or **Command Prompt** in that folder
@@ -34,7 +34,7 @@
 If you have Rust installed:
 
 ```bash
-git clone https://github.com/XTONY77/wormhole
+git clone https://github.com/xtony-exe/wormhole
 cd wormhole
 cargo build --release
 ```
