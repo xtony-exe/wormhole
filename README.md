@@ -88,7 +88,6 @@ wormhole open 8080 --to your-server.com
 Wormhole will print a clear info box:
 
 ```
- ░██╗░░░░░░░██╗░█████╗░██████╗░...
   v1.0.0  —  by THINKING TEAM · XTONY
 
   ◈ Opening [wormhole] on localhost:8080
