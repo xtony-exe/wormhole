@@ -1,3 +1,5 @@
+![Wormhole Banner](assets/wormhole-banner.svg)
+
 # 🌀 Wormhole
 
 > **A fast, modern TCP tunnel in Rust** — punch through NAT firewalls and expose local ports to the internet in seconds.
