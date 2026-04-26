@@ -1,6 +1,6 @@
 use anyhow::Result;
-use wormhole::{auth::Authenticator, shared::Delimited};
 use tokio::io::{self};
+use wormhole::{auth::Authenticator, shared::Delimited};
 
 #[tokio::test]
 async fn auth_handshake() -> Result<()> {

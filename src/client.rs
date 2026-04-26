@@ -117,8 +117,7 @@ impl Client {
         }
         remote_conn.send(ClientMessage::Accept(id)).await?;
 
-        let mut local_conn =
-            connect_with_timeout(&self.local_host, self.local_port).await?;
+        let mut local_conn = connect_with_timeout(&self.local_host, self.local_port).await?;
 
         let mut parts = remote_conn.into_parts();
         debug_assert!(parts.write_buf.is_empty(), "framed write buffer not empty");

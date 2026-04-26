@@ -29,7 +29,11 @@ fn print_banner() {
 // ─── CLI Definition ───────────────────────────────────────────────────────────
 
 #[derive(Parser, Debug)]
-#[clap(author = "XTONY", version = "1.0.0", about = "Wormhole — A modern TCP tunnel by THINKING TEAM")]
+#[clap(
+    author = "XTONY",
+    version = "1.0.0",
+    about = "Wormhole — A modern TCP tunnel by THINKING TEAM"
+)]
 struct Args {
     #[clap(subcommand)]
     command: Command,
@@ -124,15 +128,7 @@ async fn run(command: Command) -> Result<()> {
             let mut attempt = 0u32;
 
             loop {
-                match Client::new(
-                    &local_host,
-                    local_port,
-                    &to,
-                    port,
-                    secret.as_deref(),
-                )
-                .await
-                {
+                match Client::new(&local_host, local_port, &to, port, secret.as_deref()).await {
                     Ok(client) => {
                         attempt = 0;
 
@@ -141,8 +137,7 @@ async fn run(command: Command) -> Result<()> {
                         // ── Connection Info Box ───────────────────────────
                         println!(
                             "  {}",
-                            "┌──────────────────────────────────────────┐"
-                                .bright_cyan()
+                            "┌──────────────────────────────────────────┐".bright_cyan()
                         );
                         println!(
                             "  {}  {} {}",
@@ -152,8 +147,7 @@ async fn run(command: Command) -> Result<()> {
                         );
                         println!(
                             "  {}",
-                            "├──────────────────────────────────────────┤"
-                                .bright_cyan()
+                            "├──────────────────────────────────────────┤".bright_cyan()
                         );
                         println!(
                             "  {}  {} {}",
@@ -164,12 +158,7 @@ async fn run(command: Command) -> Result<()> {
                         println!(
                             "  {}  {} {}",
                             "│".bright_cyan(),
-                            format!(
-                                "  Server :  {}",
-                                to
-                            )
-                            .bright_white()
-                            .bold(),
+                            format!("  Server :  {}", to).bright_white().bold(),
                             "│".bright_cyan()
                         );
                         println!(
@@ -181,16 +170,13 @@ async fn run(command: Command) -> Result<()> {
                         println!(
                             "  {}  {} {}",
                             "│".bright_cyan(),
-                            format!("  Port   :  {}", remote_port)
-                                .bright_green()
-                                .bold(),
+                            format!("  Port   :  {}", remote_port).bright_green().bold(),
                             "│".bright_cyan()
                         );
                         println!(
                             "  {}  {} {}",
                             "│".bright_cyan(),
-                            format!("  Local  :  {}:{}", local_host, local_port)
-                                .bright_white(),
+                            format!("  Local  :  {}:{}", local_host, local_port).bright_white(),
                             "│".bright_cyan()
                         );
                         println!(
@@ -204,8 +190,7 @@ async fn run(command: Command) -> Result<()> {
                         );
                         println!(
                             "  {}",
-                            "└──────────────────────────────────────────┘"
-                                .bright_cyan()
+                            "└──────────────────────────────────────────┘".bright_cyan()
                         );
                         println!();
 
@@ -229,10 +214,7 @@ async fn run(command: Command) -> Result<()> {
                                 if !retry {
                                     break;
                                 }
-                                println!(
-                                    "\n  {} Connection closed.",
-                                    "⚠".bright_yellow().bold()
-                                );
+                                println!("\n  {} Connection closed.", "⚠".bright_yellow().bold());
                             }
                             Err(err) => {
                                 if !retry {
@@ -289,8 +271,7 @@ async fn run(command: Command) -> Result<()> {
 
             println!(
                 "  {}",
-                "┌──────────────────────────────────────────┐"
-                    .bright_cyan()
+                "┌──────────────────────────────────────────┐".bright_cyan()
             );
             println!(
                 "  {}  {} {}",
@@ -300,26 +281,26 @@ async fn run(command: Command) -> Result<()> {
             );
             println!(
                 "  {}",
-                "├──────────────────────────────────────────┤"
-                    .bright_cyan()
+                "├──────────────────────────────────────────┤".bright_cyan()
             );
             println!(
                 "  {}  {} {}",
                 "│".bright_cyan(),
-                format!("  Bind IP     :  {}", bind_addr).bright_white().bold(),
+                format!("  Bind IP     :  {}", bind_addr)
+                    .bright_white()
+                    .bold(),
                 "│".bright_cyan()
             );
             println!(
                 "  {}  {} {}",
                 "│".bright_cyan(),
-                format!("  Control Port:  7835").bright_white(),
+                "  Control Port:  7835".bright_white(),
                 "│".bright_cyan()
             );
             println!(
                 "  {}  {} {}",
                 "│".bright_cyan(),
-                format!("  Port Range  :  {} – {}", min_port, max_port)
-                    .bright_yellow(),
+                format!("  Port Range  :  {} – {}", min_port, max_port).bright_yellow(),
                 "│".bright_cyan()
             );
             println!(
@@ -349,8 +330,7 @@ async fn run(command: Command) -> Result<()> {
 
             println!(
                 "  {}",
-                "└──────────────────────────────────────────┘"
-                    .bright_cyan()
+                "└──────────────────────────────────────────┘".bright_cyan()
             );
             println!(
                 "\n  {} Waiting for connections... {}\n",

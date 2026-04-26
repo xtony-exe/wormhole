@@ -140,9 +140,7 @@ impl Server {
         if let Some(auth) = &self.auth {
             if let Err(err) = auth.server_handshake(&mut stream).await {
                 warn!(%err, "authentication failed");
-                stream
-                    .send(ServerMessage::Error(err.to_string()))
-                    .await?;
+                stream.send(ServerMessage::Error(err.to_string())).await?;
                 return Ok(());
             }
         }
@@ -195,10 +193,7 @@ impl Server {
                 match self.conns.remove(&id) {
                     Some((_, mut stream2)) => {
                         let mut parts = stream.into_parts();
-                        debug_assert!(
-                            parts.write_buf.is_empty(),
-                            "framed write buffer not empty"
-                        );
+                        debug_assert!(parts.write_buf.is_empty(), "framed write buffer not empty");
                         stream2.write_all(&parts.read_buf).await?;
                         tokio::io::copy_bidirectional(&mut parts.io, &mut stream2).await?;
                     }

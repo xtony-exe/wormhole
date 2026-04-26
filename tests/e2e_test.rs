@@ -2,13 +2,13 @@ use std::net::SocketAddr;
 use std::time::Duration;
 
 use anyhow::{anyhow, Result};
-use wormhole::{client::Client, server::Server, shared::CONTROL_PORT};
 use lazy_static::lazy_static;
 use rstest::*;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::{TcpListener, TcpStream};
 use tokio::sync::Mutex;
 use tokio::time;
+use wormhole::{client::Client, server::Server, shared::CONTROL_PORT};
 
 lazy_static! {
     /// Guard to make sure that tests are run serially, not concurrently.
