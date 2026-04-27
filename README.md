@@ -21,6 +21,16 @@
 
 ---
 
+## 🛠️ System Requirements
+
+To build or run Wormhole from source, you need:
+
+- **OS:** Windows, Linux, or macOS
+- **Rust:** v1.70.0 or newer (Stable)
+- **Network:** An active internet connection and ability to open TCP ports (7835 for control).
+
+---
+
 ## 📦 Installation
 
 ### Option 1: Download the .exe (Recommended for Windows)
